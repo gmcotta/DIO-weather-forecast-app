@@ -24,7 +24,7 @@ export class WeatherService {
     params = params.append('appid', environment.apiKey);
     params = params.append('lang', 'pt-br');
     return this.http.get<T>(
-      `api.openweathermap.org/data/2.5/${url}`,
+      `https://api.openweathermap.org/data/2.5/${url}`,
       { params }
     );
   }

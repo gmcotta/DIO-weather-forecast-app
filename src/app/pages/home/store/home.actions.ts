@@ -11,5 +11,5 @@ export const loadCurrentWeatherSuccess = createAction(
 );
 
 export const loadCurrentWeatherFailure = createAction(
-  '[Weather API] Load Current Weather Success'
+  '[Weather API] Load Current Weather Failure'
 );

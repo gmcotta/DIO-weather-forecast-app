@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="search-container">
     <div class="form-group">
-      <label>{{ text }}</label>
+      <label>Pesquisar</label>
       <div>
         <input
           type="text"
@@ -20,5 +20,12 @@
     <div class="form-group">
       <label for="">Pesquisar com <i>autocomplete</i></label>
     </div>
+  </div>
+  <jv-loader *ngIf="loading$ | async"></jv-loader>
+  <div *ngIf="!!(cityWeather$ | async) && !(loading$ | async) && !(error$ | async)">
+    {{ (cityWeather$ | async).city.name }}
+  </div>
+  <div *ngIf="!(loading$ | async) && error$ | async">
+    <a href="#">Tentar novamente</a>
   </div>
 </div>
