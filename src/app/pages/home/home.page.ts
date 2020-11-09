@@ -9,8 +9,8 @@ import * as fromHomeSelectors from './store/home.selectors';
 
 @Component({
   selector: 'jv-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss']
+  templateUrl: './containers/home/home.page.html',
+  styleUrls: ['./containers/home/home.page.scss']
 })
 export class HomePage implements OnInit {
   searchControl: FormControl;
