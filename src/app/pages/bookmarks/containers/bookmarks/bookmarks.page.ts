@@ -6,6 +6,7 @@ import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import { BookmarksState } from '../../store/bookmarks.reducers';
 
 import * as fromBookmarksSelectors from '../../store/bookmarks.selectors';
+import * as fromBookmarksActions from '../../store/bookmarks.actions';
 
 @Component({
   selector: 'jv-bookmarks',
@@ -21,5 +22,9 @@ export class BookmarksPage implements OnInit {
   ngOnInit(): void {
     this.bookmarkList$ = this.store
       .pipe(select(fromBookmarksSelectors.selectBookmarksList));
+  }
+
+  removeBookmark(id: number) {
+    this.store.dispatch(fromBookmarksActions.removeBookmark({ id }));
   }
 }
