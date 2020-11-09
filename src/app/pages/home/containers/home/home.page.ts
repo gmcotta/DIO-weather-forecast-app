@@ -37,6 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
       .pipe(select(fromHomeSelectors.selectCurrentWeatherLoading));
     this.error$ = this.store
       .pipe(select(fromHomeSelectors.selectCurrentWeatherError));
+
   }
 
   ngOnDestroy(): void {
@@ -55,5 +56,6 @@ export class HomePage implements OnInit, OnDestroy {
     bookmark.name = this.cityWeather.city.name;
     bookmark.country = this.cityWeather.city.country;
     bookmark.coord = this.cityWeather.city.coord;
+    this.store.dispatch(fromHomeActions.toggleBookmark({ entity: bookmark }));
   }
 }
