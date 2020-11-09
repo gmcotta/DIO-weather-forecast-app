@@ -4,13 +4,13 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CityWeather } from 'src/app/shared/models/weather.model';
 
-import * as fromHomeActions from './store/home.actions';
-import * as fromHomeSelectors from './store/home.selectors';
+import * as fromHomeActions from '../../store/home.actions';
+import * as fromHomeSelectors from '../../store/home.selectors';
 
 @Component({
   selector: 'jv-home',
-  templateUrl: './containers/home/home.page.html',
-  styleUrls: ['./containers/home/home.page.scss']
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
   searchControl: FormControl;
