@@ -1,1 +1,23 @@
-<p>bookmarks works!</p>
+<div class="container-fluid">
+  <div class="bookmarks-container">
+    <div>
+      <h3>Favoritos</h3>
+      <div *ngIf="!(bookmarkList$ | async).length">
+        Nenhum favorito adicionado
+      </div>
+      <ul>
+        <li *ngFor="let bookmark of bookmarkList$ | async">
+          <a>{{ bookmark.name }}</a>
+          <button
+            class="btn btn-outline-dark btn-sm ml-2"
+          >
+            X
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <label>Adicionar cidade aos favoritos</label>
+    </div>
+  </div>
+</div>
