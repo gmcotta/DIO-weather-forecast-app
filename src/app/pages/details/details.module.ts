@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsPage } from './containers/details/details.page';
 import { RouterModule } from '@angular/router';
+import { DetailsGuardService } from './services/details.guard.service';
 
 
 
@@ -12,6 +13,9 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       { path: '', component: DetailsPage },
     ]),
-  ]
+  ],
+  providers: [
+    DetailsGuardService,
+  ],
 })
 export class DetailsModule { }
