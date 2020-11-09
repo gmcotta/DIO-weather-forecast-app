@@ -11,12 +11,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import { CurrentWeatherComponent } from './pages/home/components/current-weather/current-weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentWeatherComponent
   ],
   imports: [
     BrowserModule,
