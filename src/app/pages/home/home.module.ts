@@ -15,10 +15,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
+    ComponentsModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),
-    ComponentsModule,
-    RouterModule,
   ],
   declarations: [
     HomePage,

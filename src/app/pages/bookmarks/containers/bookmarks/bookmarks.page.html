@@ -7,7 +7,7 @@
       </div>
       <ul>
         <li *ngFor="let bookmark of bookmarkList$ | async">
-          <a>{{ bookmark.name }}</a>
+          <a [routerLink]="['../details']">{{ bookmark.name }}</a>
           <button
             class="btn btn-outline-dark btn-sm ml-2"
             (click)="removeBookmark(bookmark.id)"
