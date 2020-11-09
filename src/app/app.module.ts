@@ -12,6 +12,7 @@ import { BookmarksModule } from './pages/bookmarks/bookmarks.module';
 import { HomeModule } from './pages/home/home.module';
 
 import { AppComponent } from './app.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AppComponent } from './app.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     HttpClientModule,
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

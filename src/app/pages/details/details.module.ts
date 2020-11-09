@@ -11,7 +11,11 @@ import { DetailsGuardService } from './services/details.guard.service';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: DetailsPage },
+      {
+        path: '',
+        component: DetailsPage,
+        canActivate: [DetailsGuardService],
+      },
     ]),
   ],
   providers: [
