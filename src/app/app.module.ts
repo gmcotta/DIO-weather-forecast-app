@@ -13,6 +13,7 @@ import { HomeModule } from './pages/home/home.module';
 
 import { AppComponent } from './app.component';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { reducers } from './shared/store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     AppRoutingModule,
     HomeModule,
     BookmarksModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     HttpClientModule,
