@@ -1,4 +1,4 @@
- import { ChangeDetectionStrategy } from '@angular/core';
+ import { ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
 import { Component, Input } from '@angular/core';
 import { CityWeather } from 'src/app/shared/models/weather.model';
 
@@ -12,7 +12,14 @@ export class CurrentWeatherComponent {
   @Input()
   cityWeather: CityWeather;
 
+  @Output()
+  toggleBookmark = new EventEmitter();
+
   get cityName(): string {
     return `${this.cityWeather.city.name} ${this.cityWeather.city.country}`;
+  }
+
+  onToggleBookmark(): void {
+    this.toggleBookmark.emit();
   }
 }
