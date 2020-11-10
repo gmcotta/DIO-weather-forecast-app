@@ -7,12 +7,15 @@ import { StoreModule } from '@ngrx/store';
 import { detailsReducer } from './store/details.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { DetailsEffects } from './store/details.effects';
+import { DailyWeatherComponent } from './components/daily-weather/daily-weather.component';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 
 
 @NgModule({
   declarations: [
     DetailsPage,
+    DailyWeatherComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import { DetailsEffects } from './store/details.effects';
     ]),
     StoreModule.forFeature('details', detailsReducer),
     EffectsModule.forFeature([DetailsEffects]),
+    ComponentsModule,
   ],
   providers: [
     DetailsGuardService,

@@ -7,7 +7,12 @@
       </div>
       <ul>
         <li *ngFor="let bookmark of bookmarkList$ | async">
-          <a [routerLink]="['../details']">{{ bookmark.name }}</a>
+          <a
+            [routerLink]="['../details']"
+            [queryParams]="{ lat: bookmark.coord.lat, lon: bookmark.coord.lon }"
+          >
+            {{ bookmark.name }}
+          </a>
           <button
             class="btn btn-outline-dark btn-sm ml-2"
             (click)="removeBookmark(bookmark.id)"

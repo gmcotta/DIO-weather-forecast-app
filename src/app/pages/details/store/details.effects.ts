@@ -29,7 +29,12 @@ export class DetailsEffects {
       }),
       map(([current, daily]) => {
         const entity = daily;
-        entity.city = {...entity.city, timeZone: daily.city.timeZone};
+        entity.city = {
+          ...entity.city,
+          name: current.city.name,
+          country: current.city.country,
+          timeZone: daily.city.timeZone
+        };
         return fromDetailsActions.loadWeatherDetailsSuccess({ entity });
       })
     )
