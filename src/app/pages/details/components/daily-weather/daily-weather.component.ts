@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { format } from 'date-fns';
+import { convertToLocalTime } from 'date-fns-timezone';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -33,6 +34,9 @@ export class DailyWeatherComponent {
   }
 
   unixToHourMinute(unixValue: number): string {
-    return format(fromUnixTime(unixValue), "HH:mm");
+    const timeConverted = convertToLocalTime(fromUnixTime(unixValue), {
+      timeZone: this.timeZone
+    });
+    return format(timeConverted, "HH:mm");
   }
 }
