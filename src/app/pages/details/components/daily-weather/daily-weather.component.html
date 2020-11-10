@@ -8,8 +8,10 @@
       <div>Velocidade do vento: {{ weather.wind.speed }} m/s</div>
     </div>
     <div>
-      <div>Nascer do sol: {{ weather.sunrise }} </div>
-      <div>Pôr do sol: {{ weather.sunset }} </div>
+      <div>Nascer do sol: {{ unixToHourMinute(weather.sunrise) }} </div>
+      <div>Pôr do sol: {{ unixToHourMinute(weather.sunset) }} </div>
+      <!-- <div>Nascer do sol: {{ weather.sunrise }} </div>
+      <div>Pôr do sol: {{ weather.sunset }} </div> -->
     </div>
   </div>
 </div>
