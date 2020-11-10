@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './shared/store/app.reducer';
 import { CustomRouterSerializer } from './shared/store/router/router.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { CustomRouterSerializer } from './shared/store/router/router.reducer';
     EffectsModule.forRoot([]),
     HttpClientModule,
     StoreRouterConnectingModule.forRoot({ serializer: CustomRouterSerializer}),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
