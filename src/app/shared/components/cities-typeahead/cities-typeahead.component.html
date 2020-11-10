@@ -4,6 +4,7 @@
   [typeahead]="dataSource$"
   [typeaheadAsync]="true"
   [typeaheadWaitMs]="400"
+  [disabled]="disabled"
   (typeaheadOnSelect)="onSelected($event)"
   class="form-control"
   placeholder="Pesquisar"

@@ -18,6 +18,7 @@ import { bookmarkReducer } from 'src/app/pages/bookmarks/store/bookmarks.reducer
 })
 export class HomePage implements OnInit, OnDestroy {
   searchControl: FormControl;
+  searchControlWithAutocomplete: FormControl;
   cityWeather: CityWeather;
   cityWeather$: Observable<CityWeather>;
   loading$: Observable<boolean>;
@@ -31,17 +32,16 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchControl = new FormControl('', Validators.required);
+    this.searchControlWithAutocomplete = new FormControl(undefined);
+    this.searchControlWithAutocomplete.valueChanges.subscribe({
+      next: value => console.log(value)
+    });
+
     this.cityWeather$ = this.store
       .pipe(select(fromHomeSelectors.selectCurrentWeather));
     this.cityWeather$
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe({ next: (value: CityWeather) => this.cityWeather = value });
-    // this.store
-    //   .pipe(
-    //     select(fromHomeSelectors.selectCurrentWeather),
-    //     takeUntil(this.componentDestroyed$),
-    //   )
-    //   .subscribe({ next: (value: CityWeather) => this.cityWeather = value });
     this.loading$ = this.store
       .pipe(select(fromHomeSelectors.selectCurrentWeatherLoading));
     this.error$ = this.store
