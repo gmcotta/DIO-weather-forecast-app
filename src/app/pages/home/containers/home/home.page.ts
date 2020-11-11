@@ -1,8 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ApplicationRef,
+  Component,
+  ComponentFactoryResolver,
+  Injector,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject, combineLatest } from 'rxjs';
 import {  map, takeUntil } from 'rxjs/operators';
+import { ComponentPortal, DomPortalOutlet, PortalOutlet } from '@angular/cdk/portal';
 
 import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import { CityWeather } from 'src/app/shared/models/weather.model';
@@ -28,8 +36,14 @@ export class HomePage implements OnInit, OnDestroy {
   isFavorite$: Observable<boolean>;
 
   private componentDestroyed$ = new Subject();
+  private portalOutlet: PortalOutlet;
 
-  constructor(private store: Store) { }
+  constructor(
+    private store: Store,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private appRef: ApplicationRef,
+    private injector: Injector,
+  ) { }
 
   ngOnInit(): void {
     this.searchControl = new FormControl('', Validators.required);
@@ -67,7 +81,9 @@ export class HomePage implements OnInit, OnDestroy {
           }
           return false;
         })
-      )
+      );
+
+    this.setupPortal();
   }
 
   ngOnDestroy(): void {
@@ -87,5 +103,16 @@ export class HomePage implements OnInit, OnDestroy {
     bookmark.country = this.cityWeather.city.country;
     bookmark.coord = this.cityWeather.city.coord;
     this.store.dispatch(fromHomeActions.toggleBookmark({ entity: bookmark }));
+  }
+
+  private setupPortal() {
+    const el = document.querySelector('#navbar-portal-outlet');
+    this.portalOutlet = new DomPortalOutlet(
+      el,
+      this.componentFactoryResolver,
+      this.appRef,
+      this.injector
+    );
+    //  this.portalOutlet.attach(new ComponentPortal())
   }
 }
