@@ -25,6 +25,20 @@ export class HomeEffects {
     ),
   );
 
+  loadCurrentWeatherById$ = createEffect(() => this.actions$
+    .pipe(
+      ofType(fromHomeActions.loadCurrentWeatherById),
+      mergeMap(({ id }) => this.weatherService.getCityWeatherById(id)),
+      catchError((err, caught$) => {
+        this.store.dispatch(fromHomeActions.loadCurrentWeatherFailure());
+        return caught$;
+      }),
+      map((entity: any) => {
+        return fromHomeActions.loadCurrentWeatherSuccess({ entity });
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private store: Store,

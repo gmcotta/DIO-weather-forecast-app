@@ -20,6 +20,11 @@ const reducer = createReducer(
     loading: true,
     error: false,
   })),
+  on(fromHomeActions.loadCurrentWeatherById, state => ({
+    ...state,
+    loading: true,
+    error: false,
+  })),
   on(fromHomeActions.loadCurrentWeatherSuccess, (state, { entity }) => ({
     ...state,
     loading: false,
