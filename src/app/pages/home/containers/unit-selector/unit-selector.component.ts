@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Units } from 'src/app/shared/models/units.enum';
 
 @Component({
   selector: 'jv-unit-selector',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnitSelectorComponent implements OnInit {
 
+  unit: Units;
+  unitsEnum = Units;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  updateUnit(unit: Units) {
+
+  }
 }
