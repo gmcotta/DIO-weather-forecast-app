@@ -16,7 +16,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './shared/store/app.reducer';
 import { CustomRouterSerializer } from './shared/store/router/router.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
