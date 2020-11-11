@@ -1,7 +1,11 @@
 <div class="card">
   <div class="card-body">
     <h2>{{cityName}}</h2>
-    <jv-detailed-weather [weather]="cityWeather.weather"></jv-detailed-weather>
+    <jv-detailed-weather
+      [weather]="cityWeather.weather"
+      [unit]="unit"
+    >
+    </jv-detailed-weather>
     <div class="card-actions">
       <a class="card-link" (click)="onToggleBookmark()">
         {{isFavorite ? 'Remover dos ' : 'Adicionar aos '}}favoritos

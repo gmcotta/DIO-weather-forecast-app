@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { Bookmark } from 'src/app/shared/models/bookmark.model';
+import { CityTypeaheadItem } from 'src/app/shared/models/city-typeahead-item.model';
+
 import { BookmarksState } from '../../store/bookmarks.reducers';
 
 import * as fromBookmarksSelectors from '../../store/bookmarks.selectors';
 import * as fromBookmarksActions from '../../store/bookmarks.actions';
-import { FormControl } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
-import { CityTypeaheadItem } from 'src/app/shared/models/city-typeahead-item.model';
 
 @Component({
   selector: 'jv-bookmarks',

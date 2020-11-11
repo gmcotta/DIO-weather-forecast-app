@@ -19,7 +19,9 @@ import { CityTypeaheadItem } from 'src/app/shared/models/city-typeahead-item.mod
 import * as fromHomeActions from '../../store/home.actions';
 import * as fromHomeSelectors from '../../store/home.selectors';
 import * as fromBookmarkSelectors from '../../../bookmarks/store/bookmarks.selectors';
+import * as fromConfigSelectors from 'src/app/shared/store/config/config.selectors';
 import { UnitSelectorComponent } from '../unit-selector/unit-selector.component';
+import { Units } from 'src/app/shared/models/units.enum';
 
 @Component({
   selector: 'jv-home',
@@ -35,6 +37,7 @@ export class HomePage implements OnInit, OnDestroy {
   error$: Observable<boolean>;
   bookmarkList$: Observable<Bookmark[]>;
   isFavorite$: Observable<boolean>;
+  unit$: Observable<Units>;
 
   private componentDestroyed$ = new Subject();
   private portalOutlet: PortalOutlet;
@@ -83,6 +86,8 @@ export class HomePage implements OnInit, OnDestroy {
           return false;
         })
       );
+
+    this.unit$ = this.store.pipe(select(fromConfigSelectors.selectUnitConfig));
 
     this.setupPortal();
   }
