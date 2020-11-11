@@ -4,9 +4,16 @@
   [typeahead]="dataSource$"
   [typeaheadAsync]="true"
   [typeaheadWaitMs]="400"
+  [typeaheadItemTemplate]="itemTemplate"
   [disabled]="disabled"
   (typeaheadOnSelect)="onSelected($event)"
+  (typeaheadLoading)="loading = $event"
   class="form-control"
   placeholder="Pesquisar"
 >
 
+<div *ngIf="loading">Carregando...</div>
+
+<ng-template let-item="item" #itemTemplate>
+  <span>{{ item.name }}, {{ item.country }}</span>
+</ng-template>

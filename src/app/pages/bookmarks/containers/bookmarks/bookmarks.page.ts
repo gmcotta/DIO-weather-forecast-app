@@ -25,9 +25,9 @@ export class BookmarksPage implements OnInit, OnDestroy {
   constructor(private store: Store<BookmarksState>) { }
 
   ngOnInit(): void {
-    this.searchControlWithAutocomplete = new FormControl(undefined);
     this.bookmarkList$ = this.store
-      .pipe(select(fromBookmarksSelectors.selectBookmarksList));
+    .pipe(select(fromBookmarksSelectors.selectBookmarksList));
+    this.searchControlWithAutocomplete = new FormControl(undefined);
 
     this.searchControlWithAutocomplete.valueChanges
       .pipe(takeUntil(this.componentDestroyed$))

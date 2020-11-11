@@ -17,6 +17,7 @@ export class CitiesTypeaheadComponent implements OnInit, ControlValueAccessor {
   search: string;
   dataSource$: Observable<CityTypeaheadItem[]>;
   disabled: boolean;
+  loading: boolean;
   private onChange: (value: CityTypeaheadItem) => void;
   private onTouched: () => void;
 
