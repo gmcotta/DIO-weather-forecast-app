@@ -19,6 +19,7 @@ import { CityTypeaheadItem } from 'src/app/shared/models/city-typeahead-item.mod
 import * as fromHomeActions from '../../store/home.actions';
 import * as fromHomeSelectors from '../../store/home.selectors';
 import * as fromBookmarkSelectors from '../../../bookmarks/store/bookmarks.selectors';
+import { UnitSelectorComponent } from '../unit-selector/unit-selector.component';
 
 @Component({
   selector: 'jv-home',
@@ -89,6 +90,7 @@ export class HomePage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.componentDestroyed$.next();
     this.componentDestroyed$.unsubscribe();
+    this.portalOutlet.detach();
   }
 
   doSearch(): void {
@@ -113,6 +115,6 @@ export class HomePage implements OnInit, OnDestroy {
       this.appRef,
       this.injector
     );
-    //  this.portalOutlet.attach(new ComponentPortal())
+     this.portalOutlet.attach(new ComponentPortal(UnitSelectorComponent));
   }
 }
