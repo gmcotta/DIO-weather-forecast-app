@@ -19,7 +19,8 @@
     </div>
     <div class="form-group">
       <label for="">Pesquisar com <i>autocomplete</i></label>
-      <jv-cities-typeahead [formControl]="searchControlWithAutocomplete"></jv-cities-typeahead>
+      <jv-cities-typeahead [formControl]="searchControlWithAutocomplete">
+      </jv-cities-typeahead>
     </div>
   </div>
   <jv-loader *ngIf="loading$ | async"></jv-loader>
@@ -32,6 +33,9 @@
     </jv-current-weather>
   </div>
   <div *ngIf="!(loading$ | async) && error$ | async">
-    <a href="#">Tentar novamente</a>
+    <p>
+      Ocorreu um erro ao buscar a cidade.
+      Por favor, tente novamente mais tarde
+    </p>
   </div>
 </div>

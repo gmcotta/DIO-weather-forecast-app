@@ -5,7 +5,7 @@
       <div *ngIf="!(bookmarkList$ | async).length">
         Nenhum favorito adicionado
       </div>
-      <ul>
+      <ul class="list-unstyled">
         <li *ngFor="let bookmark of bookmarkList$ | async">
           <a
             [routerLink]="['../details']"
@@ -22,8 +22,10 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div class="form-group">
       <label>Adicionar cidade aos favoritos</label>
+      <jv-cities-typeahead [formControl]="searchControlWithAutocomplete">
+      </jv-cities-typeahead>
     </div>
   </div>
 </div>
