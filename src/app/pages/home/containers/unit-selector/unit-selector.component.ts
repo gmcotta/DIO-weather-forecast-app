@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 import { Units } from 'src/app/shared/models/units.enum';
+import { AppState } from 'src/app/shared/store/app.reducer';
+
+import * as fromConfigActions from 'src/app/shared/store/config/config.actions';
+import * as fromConfigSelectors from 'src/app/shared/store/config/config.selectors';
 
 @Component({
   selector: 'jv-unit-selector',
@@ -7,16 +14,20 @@ import { Units } from 'src/app/shared/models/units.enum';
   styleUrls: ['./unit-selector.component.scss']
 })
 export class UnitSelectorComponent implements OnInit {
-
+  unit$: Observable<Units>;
   unit: Units;
   unitsEnum = Units;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-  }
+    this.unit$ = this.store.pipe(select(fromConfigSelectors.selectUnitConfig));
+    this.unit$.subscribe({
+      next: (unit: Units) => this.unit = unit,
+    });
+  };
 
   updateUnit(unit: Units) {
-
-  }
+    this.store.dispatch(fromConfigActions.updateUnit({ unit }));
+  };
 }
